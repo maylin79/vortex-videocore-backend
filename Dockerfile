@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["python", "-u", "handler.py"]
+CMD ["bash","-lc","python -u handler.py || (echo '🔥 handler crashed'; python -V; pip -V; pip freeze; ls -la; echo '--- tail ---'; tail -n 200 /tmp/* 2>/dev/null; sleep 600)"]
