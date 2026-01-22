@@ -1,6 +1,7 @@
-print("🔥 BOOT: handler.py started")
+print("🚀 BOOT: handler.py started")
+
 import sys
-sys.stdout.flush()
+sys.stdout.flush()  # Good for seeing early prints
 
 import os
 import time
@@ -8,8 +9,8 @@ import runpod
 
 def handler(event):
     inp = event.get("input", {}) or {}
-
     prompt = (inp.get("prompt") or "").strip()
+
     if not prompt:
         return {"ok": False, "error": "Missing prompt"}
 
@@ -23,7 +24,8 @@ def handler(event):
         "ts": int(time.time())
     }
 
-print("✅ BOOT: calling runpod.serverless.start")
-sys.stdout.flush()
-
+if __name__ == "__main__":
+    print("✅ BOOT: calling runpod.serverless.start")
+    sys.stdout.flush()
+    runpod.serverless.start({"handler": handler})
 runpod.serverless.start({"handler": handler})
