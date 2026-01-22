@@ -1,3 +1,7 @@
+print("🔥 BOOT: handler.py started")
+import sys
+sys.stdout.flush()
+
 import os
 import time
 import runpod
@@ -18,5 +22,8 @@ def handler(event):
         "pod_id": os.environ.get("RUNPOD_POD_ID"),
         "ts": int(time.time())
     }
+
+print("✅ BOOT: calling runpod.serverless.start")
+sys.stdout.flush()
 
 runpod.serverless.start({"handler": handler})
